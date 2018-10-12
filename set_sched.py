@@ -1,17 +1,3 @@
-# from crontab import CronTab
-#
-# cron = CronTab(tab="""  * * * * * command """)
-# job  = cron.new(command='ls -lt')
-#
-# job.minute.every(1)
-#
-# # job.run()
-# job.every_reboot()
-#
-# # for cron in CronTabs():
-# #     print(cron)
-#
-
 import sched, time, datetime
 
 s = sched.scheduler(time.time, time.sleep)
@@ -37,12 +23,12 @@ def processing(a):
 
 def schedule(day_of_week, hour, minute=0):
     while True:
-        # d0 = int(input('曜日を指定してください。月曜0～日曜6＞'))
-        # h0 = int(input('時間を指定してください。0-23＞'))
-        # m0 = int(input('分を指定してください。0-59＞'))
         et1 = set_weekly_timer(day_of_week,hour,minute)
         s.enterabs(et1, 1, processing, argument=('event1',))
         s.run()
 
 # if __name__ == '__main__' :
-#     schedule(3,6,6)
+#     d0 = int(input('曜日を指定してください。月曜0～日曜6＞'))
+#     h0 = int(input('時間を指定してください。0-23＞'))
+#     m0 = int(input('分を指定してください。0-59＞'))
+#     schedule(d0,h0,m0)
